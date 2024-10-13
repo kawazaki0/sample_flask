@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Sample flask</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Sample Flask!</h1>
+<ul>
+    {% for item in items %}
+    <li>{{ loop.index }}. {{ item.key }}={{ item.value }}</li>
+    {% else %}
+    <li>no items found</li>
+    {% endfor %}
+</ul>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul>
+    {% for category, message in messages %}
+    <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST" action="/submit">
+    {{ form.csrf_token }}
+    {{ form.key.label }} {{ form.key() }}
+    {{ form.value.label }} {{ form.value() }}
+    {{ form.submit() }}
+</form>
+</body>
+</html>
