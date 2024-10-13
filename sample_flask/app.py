@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, redirect, url_for, flash
 from flask import render_template, Blueprint
 from flask_sqlalchemy import SQLAlchemy
@@ -10,7 +12,7 @@ from wtforms.validators import Length
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-    app.config['SECRET_KEY'] = '192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev')
     app.register_blueprint(convert_bp)
     app.register_blueprint(greet_bp)
     app.register_blueprint(homepage_bp)
@@ -76,9 +78,6 @@ def load_db(key):
 @homepage_bp.route("/", methods=['GET'])
 def index():
     return render_template("index.html", items=Entry.query.all(), form=EntryForm())
-
-
-from flask import request
 
 
 def add_to_db(key, value):

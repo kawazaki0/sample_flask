@@ -2,11 +2,6 @@
 
 This is a sample Flask project.
 
-## Requirements
-
-- Python 3.x
-- Flask
-
 ## Installation
 
 1. Clone the repository:
@@ -30,7 +25,7 @@ This is a sample Flask project.
 
 1. Set environment variables:
     ```sh
-    export FLASK_SKIP_DOTENV=1
+    export FLASK_SKIP_DOTENV=1  # on Windows use `set FLASK_SKIP_DOTENV=1`
     ```
 
 2. Run the Flask application:
