@@ -11,8 +11,8 @@ This is a sample Flask project.
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/kawazaki0/sample_flask.git
+    cd sample_flask
     ```
 
 2. Create a virtual environment:
